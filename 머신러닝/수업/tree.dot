@@ -1,0 +1,21 @@
+digraph Tree {
+node [shape=box, style="filled", color="black", fontname="helvetica"] ;
+edge [fontname="helvetica"] ;
+0 [label="mean concave points <= 0.049\nsamples = 426\nvalue = [159, 267]\nclass = 양성", fillcolor="#afd7f4"] ;
+1 [label="worst area <= 952.9\nsamples = 260\nvalue = [13, 247]\nclass = 양성", fillcolor="#43a2e6"] ;
+0 -> 1 [labeldistance=2.5, labelangle=45, headlabel="True"] ;
+7 [label="samples = 252\nvalue = [7, 245]\nclass = 양성", fillcolor="#3fa0e6"] ;
+1 -> 7 ;
+8 [label="samples = 8\nvalue = [6, 2]\nclass = 악성", fillcolor="#eeab7b"] ;
+1 -> 8 ;
+2 [label="worst area <= 785.8\nsamples = 166\nvalue = [146, 20]\nclass = 악성", fillcolor="#e99254"] ;
+0 -> 2 [labeldistance=2.5, labelangle=-45, headlabel="False"] ;
+3 [label="worst texture <= 23.74\nsamples = 30\nvalue = [13, 17]\nclass = 양성", fillcolor="#d0e8f9"] ;
+2 -> 3 ;
+5 [label="samples = 14\nvalue = [0, 14]\nclass = 양성", fillcolor="#399de5"] ;
+3 -> 5 ;
+6 [label="samples = 16\nvalue = [13, 3]\nclass = 악성", fillcolor="#eb9e67"] ;
+3 -> 6 ;
+4 [label="samples = 136\nvalue = [133, 3]\nclass = 악성", fillcolor="#e6843d"] ;
+2 -> 4 ;
+}
