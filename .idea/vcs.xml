@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="VcsDirectoryMappings">
+    <mapping directory="$PROJECT_DIR$" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/딥러닝/ssd_keras" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/딥러닝/ssd_keras/ssd_keras" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/딥러닝/ssd_keras/ssd_keras/ssd_keras" vcs="Git" />
+  </component>
+</project>
