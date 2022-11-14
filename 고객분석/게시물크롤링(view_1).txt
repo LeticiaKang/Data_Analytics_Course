@@ -1,0 +1,73 @@
+no_naver_blog1=[]
+
+start = time.time()
+
+
+time_list = [] #시간
+review_list = [] #리뷰
+comment_list = [] #댓글
+like_list = [] #좋아요수
+url_list = [] #url주소
+count = 0
+
+driver = webdriver.Chrome(executable_path=chrome_path, chrome_options=chrome_options) #크롬 드라이버 위치만 바꿔주시면 됩니다.
+for url in blog_url_list: #기본적으로 고치지 않으시지만, n번째 크롤링에서 멈췄다면, blog_url_list를 blog_url_list[n:]으로 고칩니다.
+    if 'naver' in url: #네이버 블로그만 수집(다른 사이트가 섞이면 크롤링 에러가 남)
+    
+        count += 1
+        driver.get(url) #url 하나씩 글을 수집할꺼야
+        time.sleep(1)
+
+        try:
+            # 전체 본문 가지고 와서
+            driver.switch_to.frame('mainFrame') #네이버는 mainFrame을 바꿔줘야 수집이 됌
+            time.sleep(1)
+        
+            soup = bs(driver.page_source, 'lxml') #뷰티풀숩을 이용해서 구문 분석(lxml 파싱 이용. 모든 테그에서 데이터를 추출위함)
+            postview = soup.find('div', attrs={'id': re.compile('post-view.+')}).get_text()
+
+            reg = re.compile(r'[\s+]') #r은 raw string. \s+는 공백문자
+            postview_reg = reg.sub(' ',postview) #공백을 띄어쓰기로 대치해서 본문 글 수집
+            try:
+                # 좋아요수
+                like = driver.find_element("xpath", "//span[@class='u_likeit_list_btn _button btn_sympathy pcol2 off']/em[@class='u_cnt _count']")
+                like = like.text
+            except:
+                like = [] #좋아요 없으면 빈 리스트
+            
+            try:
+                timeline = driver.find_element("xpath", "//span[@class='se_publishDate pcol2']") #수정 안 한 경우
+        
+            except:
+                timeline = driver.find_element("xpath", "//p[@class='date fil5 pcol2 _postAddDate']") #수정 한 경우
+            timeline = timeline.text
+
+            try:
+                driver.find_element(By.CSS_SELECTOR,'span.btn_arr').click() #댓글 내리는 버튼(태그명.클래스선택자)
+                #driver.find_element_by_css_selector('span.btn_arr').click()
+                time.sleep(1.7)
+
+                comment_blog = []
+                comment = driver.find_element(By.CSS_SELECTOR,'span.u_cbox_contents') #댓글
+                #comment = driver.find_elements_by_css_selector('span.u_cbox_contents')
+                for i in comment: #댓글 수집
+                    com = str(i.text) #
+                    com = reg.sub(' ',com) 
+                    comment_blog.append(([com]))
+            except: 
+                comment_blog = []
+             
+            time_list.append(timeline)
+            review_list.append(postview_reg)
+            comment_list.append(comment_blog)
+            url_list.append(url)
+            like_list.append(like)
+            time.sleep(random.uniform(1,1.6))
+        except UnexpectedAlertPresentException:
+            pass
+    else:
+        no_naver_blog1.append(url)
+        print('네이버 블로그 아닌 url: ',url)
+        
+    if count%10 ==0:
+        print('{}개 블로그 크롤링 완료'.format(count))
