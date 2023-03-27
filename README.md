@@ -1,7 +1,15 @@
 ## 고객 경험을 활용한 데이터 비즈니스 분석가 교육 과정 학습내용
-- 파이썬 기초 문법
+- Python 및 Java 기초(Java 객체지향/ 클래스/ JDBC/ CRUD)
+- 데이터베이스(RDBMS: MySQL, SQLite)
 - 크롤링(Beautiful Soup, Selenium)
-- 데이터 분석 및 시각화(Pandas, Series, Matplotlib, Seaborn)
-- 머신러닝 및 딥러닝(기본 원리 및 Tensorflow)
-- 고객 분석 및 기획(Word2Vec, Ward Clouding, LDA, 고객 액션맵(CAM) 도출)
-- 웹 서비스 개발(HTML, CSS, JSP, Servlet, Django, Java)(별도 공간에 정리)
+- 인공지능 분석 알고리즘
+    - 머신러닝(지도학습, 비지도학습, 텍스트마이닝, KNN, DecisionTree, Ensemble 등)
+    - 머신러닝을 활용한 Kaggle 데이터 분석 경진대회
+    - 딥러닝(Tensorflow, MLP, CNN, RNN, Sequential, ObjectDetection 등)
+    - 머신러닝 및 딥러닝(기본 이론 및 Tensorflow, MLP, CNN, Object Detection)
+- 고객 분석 및 기획(World2vec 기반 문서 임베딩, 군집화(Ward Clouding), LPDA, 고객 Action Map 도출)
+- 문제정의 및 데이터 수집 (DT/DCX 빅데이터 수집, Value Loop분석, 웹 크롤링)
+- 웹 서비스 개발
+    - 프론트엔드 : UI/UX, HTML, CSS, JavaScript
+    - 백엔드 : Django, JSP/Servlet, Spring
+- 클라우드 (리눅스 시스템 설치, 도커와 쿠버네티스, 퍼블릭 클라우드)
